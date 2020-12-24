@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0pm0ags" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.4.0">
+  <bpmn:process id="Process_0q8qan7" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Find new articles workflow started">
+      <bpmn:outgoing>Flow_0yrxqwq</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Activity_0q4i3mw" name="New Article Scheduler">
+      <bpmn:incoming>Flow_0yrxqwq</bpmn:incoming>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0yrxqwq" sourceRef="StartEvent_1" targetRef="Activity_0q4i3mw" />
+    <bpmn:boundaryEvent id="Event_1duo9io" name="15min" attachedToRef="Activity_0q4i3mw">
+      <bpmn:outgoing>Flow_150dsht</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_1jpcq10">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT24H</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:task id="Activity_0xf7sm3" name="Find new active Group Subscriptions">
+      <bpmn:incoming>Flow_150dsht</bpmn:incoming>
+      <bpmn:outgoing>Flow_1g56vij</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_150dsht" name="" sourceRef="Event_1duo9io" targetRef="Activity_0xf7sm3" />
+    <bpmn:task id="Activity_1ie0g58" name="Find new articles since last search">
+      <bpmn:incoming>Flow_1g56vij</bpmn:incoming>
+      <bpmn:outgoing>Flow_14geq43</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1g56vij" sourceRef="Activity_0xf7sm3" targetRef="Activity_1ie0g58" />
+    <bpmn:endEvent id="Event_1sb4kpc" name="Find new articles workflow stopped">
+      <bpmn:incoming>Flow_0lqyzo8</bpmn:incoming>
+      <bpmn:incoming>Flow_0xev53g</bpmn:incoming>
+      <bpmn:terminateEventDefinition id="TerminateEventDefinition_0b0syf0" />
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="Gateway_16cr3lf" name="Does group subscription has new articles?">
+      <bpmn:incoming>Flow_14geq43</bpmn:incoming>
+      <bpmn:outgoing>Flow_0lqyzo8</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0ux9vtc</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_14geq43" sourceRef="Activity_1ie0g58" targetRef="Gateway_16cr3lf" />
+    <bpmn:sequenceFlow id="Flow_0lqyzo8" name="No" sourceRef="Gateway_16cr3lf" targetRef="Event_1sb4kpc" />
+    <bpmn:task id="Activity_1unl7hc" name="Send Message to User">
+      <bpmn:incoming>Flow_0ux9vtc</bpmn:incoming>
+      <bpmn:outgoing>Flow_0xev53g</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0ux9vtc" name="Yes" sourceRef="Gateway_16cr3lf" targetRef="Activity_1unl7hc" />
+    <bpmn:sequenceFlow id="Flow_0xev53g" sourceRef="Activity_1unl7hc" targetRef="Event_1sb4kpc" />
+    <bpmn:textAnnotation id="TextAnnotation_0ktq7fk">
+      <bpmn:text>Active group subscription is  subscription, which linked to active User.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0tv4faj" sourceRef="Activity_0xf7sm3" targetRef="TextAnnotation_0ktq7fk" />
+    <bpmn:textAnnotation id="TextAnnotation_0e7hzky">
+      <bpmn:text>Runs every 15 minutes</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0757sxs" sourceRef="Event_1duo9io" targetRef="TextAnnotation_0e7hzky" />
+    <bpmn:textAnnotation id="TextAnnotation_02jhypi">
+      <bpmn:text>Find new articles for group subscription since last time</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1ers88j" sourceRef="Activity_1ie0g58" targetRef="TextAnnotation_02jhypi" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0q8qan7">
+      <bpmndi:BPMNShape id="TextAnnotation_0ktq7fk_di" bpmnElement="TextAnnotation_0ktq7fk">
+        <dc:Bounds x="430" y="99" width="230" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0e7hzky_di" bpmnElement="TextAnnotation_0e7hzky">
+        <dc:Bounds x="200" y="210" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_02jhypi_di" bpmnElement="TextAnnotation_02jhypi">
+        <dc:Bounds x="670" y="78" width="130" height="61" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0yrxqwq_di" bpmnElement="Flow_0yrxqwq">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_150dsht_di" bpmnElement="Flow_150dsht">
+        <di:waypoint x="370" y="175" />
+        <di:waypoint x="370" y="240" />
+        <di:waypoint x="440" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1g56vij_di" bpmnElement="Flow_1g56vij">
+        <di:waypoint x="540" y="240" />
+        <di:waypoint x="600" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14geq43_di" bpmnElement="Flow_14geq43">
+        <di:waypoint x="700" y="240" />
+        <di:waypoint x="765" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0lqyzo8_di" bpmnElement="Flow_0lqyzo8">
+        <di:waypoint x="790" y="215" />
+        <di:waypoint x="790" y="130" />
+        <di:waypoint x="1022" y="130" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="802" y="171" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ux9vtc_di" bpmnElement="Flow_0ux9vtc">
+        <di:waypoint x="815" y="240" />
+        <di:waypoint x="890" y="240" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="844" y="223" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0xev53g_di" bpmnElement="Flow_0xev53g">
+        <di:waypoint x="990" y="240" />
+        <di:waypoint x="1040" y="240" />
+        <di:waypoint x="1040" y="148" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="156" y="142" width="83" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0q4i3mw_di" bpmnElement="Activity_0q4i3mw">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0xf7sm3_di" bpmnElement="Activity_0xf7sm3">
+        <dc:Bounds x="440" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ie0g58_di" bpmnElement="Activity_1ie0g58">
+        <dc:Bounds x="600" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_16cr3lf_di" bpmnElement="Gateway_16cr3lf" isMarkerVisible="true">
+        <dc:Bounds x="765" y="215" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="751" y="272" width="80" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1sb4kpc_di" bpmnElement="Event_1sb4kpc">
+        <dc:Bounds x="1022" y="112" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="998" y="82" width="85" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1unl7hc_di" bpmnElement="Activity_1unl7hc">
+        <dc:Bounds x="890" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0tv4faj_di" bpmnElement="Association_0tv4faj">
+        <di:waypoint x="524" y="200" />
+        <di:waypoint x="575" y="139" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0757sxs_di" bpmnElement="Association_0757sxs">
+        <di:waypoint x="354" y="166" />
+        <di:waypoint x="276" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1ers88j_di" bpmnElement="Association_1ers88j">
+        <di:waypoint x="677" y="200" />
+        <di:waypoint x="719" y="139" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1vo0kt7_di" bpmnElement="Event_1duo9io">
+        <dc:Bounds x="352" y="139" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="379" y="171" width="30" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
