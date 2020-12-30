@@ -16,7 +16,7 @@ Based on MVP Scope, we can specify next behaviours (here and after Telegram User
 - User can restart gettting notifications
 ## Find new articles workflow
 The workflow of finding new articles and send them to subscribers can be viewed here:
-![Find_New_Articles_WF](https://user-images.githubusercontent.com/16310793/103093463-1076cf00-4603-11eb-8cc8-65851589e515.png)
+![Find_New_Articles_WF](https://user-images.githubusercontent.com/16310793/103340221-62bb5400-4a38-11eb-947f-c28ce8ecad1b.png)
 
 # Technological stack
 - SpringBoot as a skeleton framework
