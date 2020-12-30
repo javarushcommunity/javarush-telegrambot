@@ -1,4 +1,6 @@
-# Javarush Telegram Bot overview
+# Javarush Telegram Bot
+![87- Converted](https://user-images.githubusercontent.com/16310793/103351456-2861af00-4a58-11eb-9a64-1f69eff0631a.jpg)
+
 JavaRush Telegram bot from community for community. Written by developers, who learned in [Javarush](https://javarush.ru).
 ## Idea
 The main idea is to show how to create real application, which can be used by someone else. 
@@ -23,8 +25,15 @@ The workflow of finding new articles and send them to subscribers can be viewed 
 - Spring Scheduler as a task manager
 - MySQL database as a database for saving user and subscription info
 - Flyway database migration tool
-- Telegram-bot starter
+- Telegram-bot SpringBoot starter
 - Spring Data starter
+- Unirest - lib for working with REST calls
+
+## Code of Conduct
+Please, follow [Code of Conduct](CODE_OF_CONDUCT.md) page.
+
+## License
+This project is Apache License 2.0 - see the [LICENSE](LICENSE) file for details
 
 # Contributions
 Feel free to suggest new features via [github issue](https://github.com/javarushcommunity/javarush-telegrambot/issues/new).
