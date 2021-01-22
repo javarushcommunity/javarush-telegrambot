@@ -1,5 +1,6 @@
 # Release Notes
 
-## 1.0-SNAPSHOT
+## 0.1.0-SNAPSHOT
 
-*   Would be added
+*   added stub telegram bot
+*   added SpringBoot skeleton project
