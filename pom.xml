@@ -10,15 +10,22 @@
 	</parent>
 	<groupId>com.github.javarushcommunity</groupId>
 	<artifactId>javarush-telegrambot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>Javarush TelegramBot</name>
-	<description>Telgeram bot for Javarush from community to community</description>
+	<description>Telegram bot for Javarush from community to community</description>
 
 	<properties>
 		<java.version>11</java.version>
+		<telegrambot.starter.version>5.0.1</telegrambot.starter.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.telegram</groupId>
+			<artifactId>telegrambots-spring-boot-starter</artifactId>
+			<version>${telegrambot.starter.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
