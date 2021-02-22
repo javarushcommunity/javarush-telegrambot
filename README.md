@@ -15,10 +15,23 @@ Based on MVP Scope, we can specify next behaviours (here and after Telegram User
 - User can view list of gorup subscriptions on which user subscribes
 - User can unsubscribe from gorup of articles
 - User can set an inactive bot and do not receive notifications
-- User can restart gettting notifications
+- User can restart getting notifications
 ## Find new articles workflow
 The workflow of finding new articles and send them to subscribers can be viewed here:
 ![Find_New_Articles_WF](https://user-images.githubusercontent.com/16310793/103340221-62bb5400-4a38-11eb-947f-c28ce8ecad1b.png)
+
+## Deployment
+Deployment process as easy as possible:
+Required software:
+- terminal for running bash scripts
+- docker
+- docker-compose
+
+to deploy application, switch to needed branch and run bash script:
+
+$ bash start.sh ${bot_username} ${bot_token}
+
+That's all.
 
 # Technological stack
 - SpringBoot as a skeleton framework

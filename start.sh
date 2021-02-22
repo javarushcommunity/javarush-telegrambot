@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# ensure, that master branch would be deployed
-git checkout main
-
 # Pull new changes
 git pull
 
