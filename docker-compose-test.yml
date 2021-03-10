@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+  jrtb-db-dev:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'dev_jrtb_db'
+      # So you don't have to use root, but you can if you like
+      MYSQL_USER: 'dev_jrtb_db_user'
+      # You can use whatever password you like
+      MYSQL_PASSWORD: 'dev_jrtb_db_password'
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3306:3306'
+    expose:
+      # Opens port 3306 on the container
+        - '3306'
