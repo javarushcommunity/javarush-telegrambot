@@ -33,6 +33,22 @@ $ bash start.sh ${bot_username} ${bot_token}
 
 That's all.
 
+# Local development
+For local development and testing, use `docker-compose-test.yml`. 
+Run command: 
+```shell
+docker-compose -f docker-compose-test.yml up
+```
+Next step, is to run SpringBoot app with configured **Edit Configuration** in which provide two env var: 
+
+`bot.token=${BOT_TOKEN};bot.username=${BOT_USERNAME}`
+
+And add VM Options: 
+
+`-Dspring.profiles.active=test `
+
+ With these configurations - run SpringBoot main method.
+
 # Technological stack
 - SpringBoot as a skeleton framework
 - Spring Scheduler as a task manager

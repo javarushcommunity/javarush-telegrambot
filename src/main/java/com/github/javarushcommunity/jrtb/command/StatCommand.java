@@ -13,7 +13,7 @@ public class StatCommand implements Command {
     private final TelegramUserService telegramUserService;
     private final SendBotMessageService sendBotMessageService;
 
-    public final static String STAT_MESSAGE = "Javarush Telegram Bot использует %s человек.";
+    public final static String STAT_MESSAGE = "Меня использует %s человек.";
 
     @Autowired
     public StatCommand(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService) {

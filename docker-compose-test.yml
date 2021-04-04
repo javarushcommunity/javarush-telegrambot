@@ -18,3 +18,4 @@ services:
     expose:
       # Opens port 3306 on the container
         - '3306'
+    command: --character-set-server=utf8 --collation-server=utf8_general_ci
