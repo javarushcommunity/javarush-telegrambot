@@ -29,12 +29,17 @@ public class ListGroupSubCommand implements Command {
         //todo add exception handling
         TelegramUser telegramUser = telegramUserService.findByChatId(getChatId(update))
                 .orElseThrow(NotFoundException::new);
+        String message;
+        if(telegramUser.getGroupSubs().isEmpty()) {
+            message = "Пока нет подписок на группы. Чтобы добавить подписку напиши /addGroupSub";
+        } else {
+            String collectedGroups = telegramUser.getGroupSubs().stream()
+                    .map(it -> "Группа: " + it.getTitle() + " , ID = " + it.getId() + " \n")
+                    .collect(Collectors.joining());
+            message =  String.format("Я нашел все подписки на группы: \n\n %s", collectedGroups);
+        }
 
-        String message = "Я нашел все подписки на группы: \n\n";
-        String collectedGroups = telegramUser.getGroupSubs().stream()
-                .map(it -> "Группа: " + it.getTitle() + " , ID = " + it.getId() + " \n")
-                .collect(Collectors.joining());
 
-        sendBotMessageService.sendMessage(telegramUser.getChatId(), message + collectedGroups);
+        sendBotMessageService.sendMessage(telegramUser.getChatId(), message);
     }
 }

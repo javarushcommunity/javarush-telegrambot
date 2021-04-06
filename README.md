@@ -39,7 +39,7 @@ Run command:
 ```shell
 docker-compose -f docker-compose-test.yml up
 ```
-Next step, is to run SpringBoot app with configured **Edit Configuration** in which provide two env var: 
+Next step, is to run SpringBoot app with configured **Edit Configuration** in which two env vars are provided: 
 
 `bot.token=${BOT_TOKEN};bot.username=${BOT_USERNAME}`
 

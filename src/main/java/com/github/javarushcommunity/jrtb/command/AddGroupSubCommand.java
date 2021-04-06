@@ -62,8 +62,7 @@ public class AddGroupSubCommand implements Command {
     private void sendNotValidGroupID(String chatId, String groupId) {
         String groupNotFoundMessage = "Неправильный ID группы = \"%s\"";
         sendBotMessageService.sendMessage(chatId, String.format(groupNotFoundMessage, groupId));
-
-    }
+;    }
 
     private void sendGroupIdList(String chatId) {
         String groupIds = javaRushGroupClient.getGroupList(GroupRequestArgs.builder().build()).stream()
@@ -71,8 +70,8 @@ public class AddGroupSubCommand implements Command {
                 .collect(Collectors.joining());
 
         String message = "Чтобы подписаться на группу - передай комадну вместе с ID группы. \n" +
-                "Например: /addGroupSub 16. \n\n" +
-                "я подготовил список всех групп - выберай какую хочешь :) \n\n" +
+                "Например: /addGroupSub 16 \n\n" +
+                "я подготовил список всех групп - выбирай какую хочешь :) \n\n" +
                 "имя группы - ID группы \n\n" +
                 "%s";
 
