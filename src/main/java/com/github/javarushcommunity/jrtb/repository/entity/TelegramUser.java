@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "tg_user")
-@EqualsAndHashCode
+@EqualsAndHashCode(exclude = "groupSubs")
 public class TelegramUser {
 
     @Id
