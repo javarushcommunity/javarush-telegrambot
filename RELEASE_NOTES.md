@@ -1,5 +1,9 @@
 # Release Notes
 
+## 0.6.0-SNAPSHOT
+
+*   JRTB-7: added the ability to delete group subscription.
+
 ## 0.5.0-SNAPSHOT
 
 *   JRTB-5: added ability to subscribe on group
