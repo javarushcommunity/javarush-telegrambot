@@ -1,7 +1,6 @@
 package com.github.javarushcommunity.jrtb.javarushclient;
 
 import com.github.javarushcommunity.jrtb.javarushclient.dto.PostInfo;
-import com.github.javarushcommunity.jrtb.repository.entity.GroupSub;
 import kong.unirest.GenericType;
 import kong.unirest.Unirest;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,11 +23,12 @@ public class JavaRushPostClientImpl implements JavaRushPostClient {
         List<PostInfo> lastPostsByGroup = Unirest.get(javarushApiPostPath)
                 .queryString("order", "NEW")
                 .queryString("groupKid", groupId)
+                .queryString("limit", 15)
                 .asObject(new GenericType<List<PostInfo>>() {
                 }).getBody();
         List<PostInfo> newPosts = new ArrayList<>();
-        for(PostInfo post: lastPostsByGroup) {
-            if(lastPostId.equals(post.getId())) {
+        for (PostInfo post : lastPostsByGroup) {
+            if (lastPostId.equals(post.getId())) {
                 return newPosts;
             }
             newPosts.add(post);
