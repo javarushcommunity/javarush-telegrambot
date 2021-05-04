@@ -14,6 +14,8 @@ import java.util.stream.Collectors;
 @Service
 public class FindNewArticleServiceImpl implements FindNewArticleService {
 
+    public static final String JAVARUSH_WEB_POST_FORMAT = "https://javarush.ru/groups/posts/%s";
+
     private final GroupSubService groupSubService;
     private final JavaRushPostClient javaRushPostClient;
     private final SendBotMessageService sendMessageService;
@@ -62,6 +64,6 @@ public class FindNewArticleServiceImpl implements FindNewArticleService {
     }
 
     private String getPostUrl(String key) {
-        return String.format("https://javarush.ru/groups/posts/%s", key);
+        return String.format(JAVARUSH_WEB_POST_FORMAT, key);
     }
 }
