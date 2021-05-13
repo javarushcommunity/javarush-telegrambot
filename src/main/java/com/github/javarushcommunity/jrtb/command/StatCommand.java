@@ -1,5 +1,6 @@
 package com.github.javarushcommunity.jrtb.command;
 
+import com.github.javarushcommunity.jrtb.command.annotation.AdminCommand;
 import com.github.javarushcommunity.jrtb.service.SendBotMessageService;
 import com.github.javarushcommunity.jrtb.service.TelegramUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 /**
  * Statistics {@link Command}.
  */
+@AdminCommand
 public class StatCommand implements Command {
 
     private final TelegramUserService telegramUserService;
