@@ -12,7 +12,7 @@ import org.mockito.Mockito;
 
 import java.util.Arrays;
 
-import static java.util.Collections.emptyList;
+import static java.util.Collections.singletonList;
 
 @DisplayName("Unit-level testing for CommandContainer")
 class CommandContainerTest {
@@ -25,7 +25,7 @@ class CommandContainerTest {
         TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
         JavaRushGroupClient groupClient = Mockito.mock(JavaRushGroupClient.class);
         GroupSubService groupSubService = Mockito.mock(GroupSubService.class);
-        commandContainer = new CommandContainer(sendBotMessageService, telegramUserService, groupClient, groupSubService, emptyList());
+        commandContainer = new CommandContainer(sendBotMessageService, telegramUserService, groupClient, groupSubService, singletonList("username"));
     }
 
     @Test
