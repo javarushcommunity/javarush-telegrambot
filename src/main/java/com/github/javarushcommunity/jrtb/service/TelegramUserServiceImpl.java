@@ -32,6 +32,11 @@ public class TelegramUserServiceImpl implements TelegramUserService {
     }
 
     @Override
+    public List<TelegramUser> findAllInActiveUsers() {
+        return telegramUserRepository.findAllByActiveFalse();
+    }
+
+    @Override
     public Optional<TelegramUser> findByChatId(String chatId) {
         return telegramUserRepository.findById(chatId);
     }

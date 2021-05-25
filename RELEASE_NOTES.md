@@ -1,5 +1,8 @@
 # Release Notes
 
+## 0.8.0-SNAPSHOT
+*   JRTB-10: extended bot statistics for admins.
+
 ## 0.7.0-SNAPSHOT
 
 *   JRTB-4: added ability to send notifications about new articles
