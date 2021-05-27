@@ -1,0 +1,1 @@
+ALTER TABLE tg_user MODIFY chat_id INT;
