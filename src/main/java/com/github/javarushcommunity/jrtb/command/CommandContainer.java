@@ -45,7 +45,7 @@ public class CommandContainer {
         unknownCommand = new UnknownCommand(sendBotMessageService);
     }
 
-    public Command retrieveCommand(String commandIdentifier, String username) {
+    public Command findCommand(String commandIdentifier, String username) {
         Command orDefault = commandMap.getOrDefault(commandIdentifier, unknownCommand);
         if (isAdminCommand(orDefault)) {
             if (admins.contains(username)) {

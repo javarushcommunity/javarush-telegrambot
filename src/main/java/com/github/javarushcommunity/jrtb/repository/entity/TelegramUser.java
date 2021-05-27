@@ -17,7 +17,7 @@ public class TelegramUser {
 
     @Id
     @Column(name = "chat_id")
-    private String chatId;
+    private Long chatId;
 
     @Column(name = "active")
     private boolean active;
